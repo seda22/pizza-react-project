@@ -1,68 +1,725 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* yazdığım fontlar çalışmazsa diye önlem */
+body{
+    font-family: Arial, Helvetica, sans-serif;
 }
-a:hover {
-  color: #535bf2;
+/* header bölümü başlangıç */
+.hero {
+  min-height: 100vh;                 /* 1080px karşılığı ekranın tamamını kaplayacak Hero en az bir ekran yüksekliğinde oldu */
+  width: 100%;                       /* 1920px karşılığı tam ekran genişliği kapladı */
+
+  background-image: url("home-banner.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: flex; 
 }
 
-body {
-  margin: 0;
+.hero-container {
+  width: 100%; /*küçük ekranlarda taşması önlendi*/
+  max-width: 1080px;/*büyük ekran limiti ile çok büyük durması önlendi*/
+  margin: 0 auto; /*yatayda tam ortaya hizalandı*/
+/**/
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  gap: 16px;
+  padding:20px 24px; /*İçerik yukarı–aşağı 20px, sağ–sol 24px içerden uzaklaştırıldı*/
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* logo isim font ve ölçüleri */
+.logo-isim {
+  font-family: "Londrina Solid";
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: capitalize;
+  color: #ffffff;
+  margin-top: 56px;
+  padding: 0 0 50px 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+/* cazip yazı font ve ölçüleri */
+.cazip{
+  font-family: "Satisfy";
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #FDC913;
+}
+
+/* ana baslık özellikleri */
+h1.ana-baslik{
+font-family: "Roboto Condensed";
+font-weight: 300;
+font-size: 86px;
+line-height: 92px;
+letter-spacing: 1.5px;
+text-align: center;
+text-transform: uppercase;
+color: #ffffff;
+
+}
+/* acıktım buton özellikleri */
+.buton-1{
+  width: 193px;
+  height: 56px;
+
+  background-color: #FFD400; 
+  color: #292929;
+
+  border: none;
+  border-radius: 50px;
+
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 56px; /* dikey ortalama */
+  letter-spacing: 0;
+  text-align: center;
+
+}
+/* header bölümü bitiş */
+
+
+
+
+/* Nav bar başlangıç */
+.nav{
+  width: 100%; /*Tam ekran genişliği kaplandı*/
+  padding: 26px 24px; /*küçük ekranlarda nav kenarlara yapışması önlendi*/
+  background: #ffffff;
+  display: flex;
+  justify-content: center; /*nav-liste ortalandı*/
+}
+
+/* İç liste */
+.nav-liste{
+  width: min(1068px, 100%); /*büyük ekranlarda 1068px i geçmeyecek mobilde taşmadı*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Her kategori (ikon + yazı yanyana) */
+.nav-liste a{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Barlow", sans-serif;
+  font-size: 18px;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: #292929;
+  line-height: 32.4px;
+  text-decoration: none;
+  white-space: nowrap; /* yazı kırılmasın */
+  
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
+/* ikon boyutu */
+.nav-liste img{
+  width: 42px;
+  height: 42px;
+}
+
+/*nav bar bitiş*/
+
+
+/* CTA BAŞLANGIÇ*/
+
+.cta{
+  max-width: 1120px;      /* figmadaki genişlik+ padding*/
+  margin:0 auto;          /*Sayfa ortasına alındı grid*/
+  margin-top: 60px;       /* üstten mesafe verildi */
+  padding: 0 24px;        /* soldan/sağdan güvenli boşluk özellikle mobil için */
+}
+
+/* 2 kolon: sol büyük + sağ iki kart */
+.cta-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /*2 eşit kolon oluşturuldu sağ ve sol olarak*/
+  gap: 16px;              /* kartlar arası boşluk verildihem sağ sol hem sağ iki grid arası için */
+}
+
+/* Kartlar genel stil tanımlandı*/
+.cta-card{
+  position: relative; 
+  border-radius: 16px; /*köşelere yuvarlama yapıldı keskinlik giderildi*/
+  overflow: hidden; /*arka plan resim taşarsa kırpıldı*/
+  height: 216px;      /* sağ kartların standart yüksekliği verildi */
+  background-size: contain;    /* kırpma yok */
+  background-position: right center; /*resim sağda konumlandırıldı*/
+  background-repeat: no-repeat; /*resim tekrar etmesi engellendi*/
+}
+
+/* Sol büyük kart: 2 satır kaplasın */
+.sol-buyuk{
+  grid-row: 1 / span 2; /*sol kart 2 satır kapladı*/
+  height: 449px;      /* figmadaki toplam yükseklik*/
+}
+
+/* yazı ve buton kartın üstünde dursun */
+.cta-content{
+  position: absolute; /*kartın üstüne katman oluşturuldu*/
+  left: 32px;
+  top: 28px;
+  color: #ffffff;
+  max-width: 60%; /*yazının görseli kapatması engellendi*/
+}
+
+.cta-content h2{
+  font-family: "Quattrocento", serif;
+  font-weight: 700;
+  font-size: 68px;
+  line-height: 72px;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+
+h3.hackathlon{
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;       /* SemiBold */
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0;
+  margin: 0 0 16px;       /* butonla nefes */
+  color: #ffffff;
+}
+
+/* alt sağ kart başlığı */
+.cta-content{
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0;
+  margin: 0 0 12px;
+}
+
+.red{ color: #CE2829; }
+.black{ color: #292929; }
+
+
+
+#grid-sol{
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;        /* SemiBold */
+  font-size: 20px;
+  line-height: 26.76px;
+  letter-spacing: 0;
+  margin: 0 0 16px;        /* butonla araya nefes */
+}
+
+
+/* Buton tanımlamaları yapıldı*/
+.cta-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0;
+  height: 48px;          /* Figma’daki line-height yerine */
+  padding: 0 25px;       /* yatay boşluk */
+  background: #ffffff;
+  color: #CE2829;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+
+/* ARKAPLAN GÖRSELLERİ */
+
+.sol-buyuk{    background-image: url("./public/assets/iteration-2/cta/kart-1.png");}
+.sag-ust{    background-image: url("./public/assets/iteration-2/cta/kart-2.png"); }
+.sag-alt{ background-image: url("./public/assets/iteration-2/cta/kart-3.png");}
+
+/*CTA bitiş*/
+
+/*Menu bölümü başlangıç*/
+.menu {
+  background-color: #faf7f2; /*arka plan rengi krem yapıldı.*/
+  padding: 80px 120px; /*içeriğe üstten alttan boşluk verildi.*/
+  text-align: center; /*içindeki yazılar ortalandı*/
+}
+/*en çok paketlenen menüler yazısı için tanımlamalar yapıldı.*/
+.menu-subtitle {  
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 44.27px;
+  letter-spacing: 0;
+  color: #CE2829;
+  margin-bottom: 8px;
+}
+/*Acıktıran Kodlara Doyuran Lezzetler başlığı için tanımlamalar yapıldı.*/
+.menu-title {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 56.2px;
+  letter-spacing: 0;
+  text-align: center;
+  color: #292929;
+  margin-bottom: 32px;
+}
+
+/* KATEGORİLER CONTAINER */
+.menu-categories {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 24px auto 48px;
+  max-width: 1068px;
+  width: 100%;
+}
+
+.menu-categories li {
+  margin: 0;
+  padding: 0;
+}
+
+/* YENI BUTTON */
+.menu-categories li button {
+  display: inline-flex; /*yanyana hizaladık butonları*/
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background-color: #ffffff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50px;
+  min-height: 66px;
+
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #292929;
+}
+/* ICON ölçüleri tanımlandı*/
+.menu-categories li button img {
+  width: 42px;
+  height: 42px;
+}
+
+/* ACTIVE STATE ile siyah olan pizza için tanımlamalar yapıldı.*/
+.menu-categories li button.active {
+  background-color: #292929;
+  color: #ffffff;
+}
+
+
+
+/* KARTLAR */
+.menu .container{
+  width: min(1068px, 100% - 48px);
+  margin: 0 auto;
+}
+
+/*kartlar 3 kolona dizildi ve gap ile aralarına boşluk verildi.*/
+.menu-cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 32px;
+}
+
+/*kart kutusu tanımlandı.*/
+.card{
+  background:#ffffff;
+  border-radius:12px;
+  padding:24px;
+  text-align:left;
+}
+/*kart başlıkları tanımlandı*/
+.card h3{
+font-family: "Barlow";
+font-weight: 600;
+font-size: 22px;
+line-height: 29.44px;
+letter-spacing: 0%;
+padding: 5px;
+}
+
+
+.card-info{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.card span{
+font-family: "Barlow";
+font-weight: 600;
+font-size: 16px;
+line-height: 28.8px;
+letter-spacing: 0%;
+display: flex;
+gap: 20px;   
+}
+
+.card strong{
+font-family: "Barlow";
+font-weight: 700;
+font-style: Bold;
+font-size: 20px;
+line-height: 24.76px;
+letter-spacing: 0%;
+text-align: right;
+}
+
+.card img{
+  width: min(270px, 100%);
+  height: 265px;
+  object-fit: contain;
+  display:block;
+  margin: 0 auto 16px;
+}
+
+/* FOOTER */
+.footer{
+  width: 100%;
+  background-color: #292929;
+  color: #ffffff;
+  padding: 58px 0;   /* SADECE üst-alt */
+}
+
+.footer-ust{
+  width: min(1066px, 100% - 48px);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.footer-ust > div{
+  flex: 1;
+}
+
+.bolum-bir{
+  flex: 1.3;
+}
+
+
+span.logo{
+font-family: Londrina Solid;
+font-weight: 400;
+font-style: Regular;
+font-size: 50px;
+/*leading-trim: NONE;*/
+line-height: 50px;
+letter-spacing: 0%;
+vertical-align: middle;
+text-transform: capitalize;
+}
+
+.iletisim-bolumu{
+display: flex;
+flex-direction: column;
+font-family: Barlow;
+font-weight: 400;
+font-style: Regular;
+font-size: 18px;
+/*leading-trim: NONE;*/
+line-height: 32.4px;
+letter-spacing: 0%;
+vertical-align: middle;
+}
+.iletisim-bolumu img{
+width: 28;
+height: 28;
+/*angle: 0 deg;*/
+opacity: 1;
+}
+
+.footer-baslik{
+font-family: Barlow;
+font-weight: 500;
+font-style: Medium;
+font-size: 24px;
+/*leading-trim: NONE;*/
+line-height: 32.11px;
+letter-spacing: 0%;
+vertical-align: middle;
+}
+
+.hot-menu-icerik li{
+list-style: none;
+font-family: Barlow;
+font-weight: 400;
+font-style: Regular;
+font-size: 18px;
+/*leading-trim: NONE;*/
+line-height: 32.4px;
+letter-spacing: 0%;
+vertical-align: middle;
+}
+.instagram-images{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.instagram-images img{
+width: 104.5;
+height: 94.5;
+top: 6px;
+/*angle: 0 deg;*/
+opacity: 1;
+border-radius: 3px;
+}
+
+.footer-bottom{
+  border-top: 1px solid #FFFFFF26;  /* çizgi tam genişlik */
+  padding: 24px 0;                  /* çizgi ile içerik arası */
+}
+
+.footer-bottom-icerik{
+  width: min(1066px, 100% - 48px);
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-bottom p{
+font-family: Barlow;
+font-weight: 400;
+font-style: Regular;
+font-size: 16px;
+/*leading-trim: NONE;*/
+line-height: 28.8px;
+letter-spacing: 0%;
+vertical-align: middle;
+}
+
+
+@media (max-width: 768px){
+
+  
+  html, body { overflow-x: hidden; }
+
+
+  .nav{
+    padding: 20px 0;
+  }
+
+  .nav-liste{
+    width: min(520px, 100% - 32px);
+    margin: 0 auto;
+    padding: 16px 0;
+    list-style: none;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+  }
+
+  .nav-liste a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-family: "Barlow", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #292929;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .nav-liste img{
+    width: 34px;
+    height: 34px;
+  }
+
+  .cta{
+    margin-top: 32px;
+    padding: 0 16px;
+  }
+
+  .cta-grid{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cta-card{
+    height: 220px;
+    background-size: cover;
+    background-position: right center;
+  }
+
+  .sol-buyuk{
+    grid-row: auto;
+    height: 300px;
+  }
+
+  .cta-content{
+    left: 20px;
+    top: 20px;
+    max-width: 75%;
+  }
+
+  .cta-content h2{
+    font-size: 44px;
+    line-height: 46px;
+  }
+
+  h3.hackathlon{
+    font-size: 24px;
+    line-height: 30px;
+    margin: 0 0 12px;
+  }
+
+  #grid-sol{
+    font-size: 14px;
+    line-height: 18px;
+    margin: 8px 0 14px;
+  }
+
+  .red, .black{
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+
+  .cta-btn{
+    height: 40px;
+    padding: 0 18px;
+    font-size: 12px;
+  }
+
+  .menu{
+    padding: 56px 0;
+    text-align: center;
+  }
+
+  .menu-subtitle{
+    font-size: 22px;
+    line-height: 30px;
+    margin-bottom: 8px;
+  }
+
+  .menu-title{
+    font-size: 30px;
+    line-height: 38px;
+    max-width: 360px;
+    margin: 0 auto 20px;
+  }
+
+  .menu-categories{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    max-width: 420px;
+    margin: 0 auto 28px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu-categories button{
+    width: 100%;
+    height: 54px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: none;
+    border-radius: 999px;
     background-color: #ffffff;
+
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #292929;
+    cursor: pointer;
   }
-  a:hover {
-    color: #747bff;
+
+  .menu-categories button img{
+    width: 28px;
+    height: 28px;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .menu-categories button.active{
+    background-color: #292929;
+    color: #ffffff;
+  }
+
+  .menu-cards{
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .card img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+    .footer-ust{
+    flex-direction: column;
+    gap: 24px;
+    width: min(520px, 100% - 32px);
+  }
+
+  /* logo/iletişim çok ortalanmasın */
+  .bolum-bir{
+    flex: unset;
+  }
+
+  /* Hot Menu yazıları kırılmasın, ama gerekirse taşmasın */
+  .hot-menu-icerik li{
+    white-space: normal; 
+  }
+
+  /* instagram 3'lü kalsın ama küçülsün */
+  .instagram-images{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .instagram-images img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* footer-bottom: mobilde de içerik ortalı ve düzgün */
+  .footer-bottom{
+    width: 100%;
+    padding: 16px 0;
+  }
+  .footer-bottom-icerik{
+    width: min(520px, 100% - 32px);
+    margin: 0 auto;
   }
 }
+
+
+
+
+
