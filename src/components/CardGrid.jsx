@@ -1,4 +1,5 @@
-export default function CardGrid() {
+export default function CardGrid(props) {
+    const {setSelectedPage} = props;
     return (
         <>
             <section className="cta">
@@ -7,21 +8,21 @@ export default function CardGrid() {
                         <div className="cta-content">
                             <h2>Özel<br />Lezzetus</h2> {/*En önemli kart h2*/}
                             <p id="grid-sol">Position:Absolute Acı Burger</p>
-                            <a className="cta-btn" href="#">SİPARİŞ VER</a>
+                            <button className="cta-btn" href="#" onClick={()=>setSelectedPage("OrderPages")}>SİPARİŞ VER</button>
                         </div>
                     </article>
 
                     <article className="cta-card sag-ust">
                         <div className="cta-content">
                             <h3 className="hackathlon">Hackathlon <br /> Burger Menü</h3>
-                            <a className="cta-btn" href="#">SİPARİŞ VER</a>
+                            <button className="cta-btn" href="#" onClick={()=>setSelectedPage("OrderPages")}>SİPARİŞ VER</button>
                         </div>
                     </article>
 
                     <article className="cta-card sag-alt">
                         <div className="cta-content">
                             <span className="red">Çoooook </span> <span className="black">hızlı <br /> npm gibi kurye</span>
-                            <a className="cta-btn" href="#">SİPARİŞ VER</a>
+                            <button className="cta-btn" href="#" onClick={()=>setSelectedPage("OrderPages")}>SİPARİŞ VER</button>
                         </div>
                     </article>
 
