@@ -8,11 +8,13 @@ import NavButtons from "./components/NavButtons"
 import OrderPage from "./OrderPage"
 import FakeDataList from "../FakeDataList"
 import FakeDataMenuList from "../FakeDataMenuList"
+// import "./App.css"
+
 
 
 export default function App (){
   const[selectedPage, setSelectedPage] = useState("PizzaWorld");
-  const [orderData, setOrderData] = useState(null);
+  const [orderData, setOrderData] = useState(null); {/*Sipariş bilgisini state olarak saklayacağım. Henüz sepet boş olduğu için null olarak tanımlandı başlangıç değeri. */}
 
 
   return(
