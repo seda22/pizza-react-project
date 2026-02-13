@@ -8,7 +8,7 @@ import NavButtons from "./components/NavButtons"
 import OrderPage from "./OrderPage"
 import FakeDataList from "../FakeDataList"
 import FakeDataMenuList from "../FakeDataMenuList"
-// import "./App.css"
+import SuccessPage from "./components/SuccessPage"
 
 
 
@@ -16,20 +16,31 @@ export default function App (){
   const[selectedPage, setSelectedPage] = useState("PizzaWorld");
   const [orderData, setOrderData] = useState(null); {/*Sipariş bilgisini state olarak saklayacağım. Henüz sepet boş olduğu için null olarak tanımlandı başlangıç değeri. */}
 
-
   return(
     
     <>
   
-    {/*Ternary if tanımladık. Ana sayfadaysa neler gösterecek orderpagedeyse neler gösterecek. */}
-    {selectedPage === "PizzaWorld"? (
-      <><Header setSelectedPage={setSelectedPage}/> {/*prop olarak setSelectedPAge fomksiyonunu Header componentine yolladık. */}
-    <NavButtons FakeDataList={FakeDataList}/>
-    <CardGrid setSelectedPage={setSelectedPage}/> {/*prop olarak setSelectedPAge fomksiyonunu Header componentine yolladık. */}
-    <Menu FakeDataMenuList={FakeDataMenuList}/></>
-    ): (<><OrderPage setSelectedPage={setSelectedPage} setOrderData={setOrderData}/></>)} {/*prop olarak setSelectedPAge fomksiyonunu Header componentine yolladık. */}
+    {selectedPage === "PizzaWorld" && (
+        <>
+          <Header setSelectedPage={setSelectedPage}/>
+          <NavButtons FakeDataList={FakeDataList}/>
+          <CardGrid setSelectedPage={setSelectedPage}/>
+          <Menu FakeDataMenuList={FakeDataMenuList}/>
+        </>
+      )}
 
-    <Footer/>
+      {selectedPage === "OrderPages" && (
+        <OrderPage
+          setSelectedPage={setSelectedPage}
+          setOrderData={setOrderData}
+        />
+      )}
+
+      {selectedPage === "success" && (
+        <SuccessPage orderData={orderData}/>
+      )}
+
+      <Footer/>
     </>
   )
 }

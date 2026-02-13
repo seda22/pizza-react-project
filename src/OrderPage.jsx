@@ -11,8 +11,42 @@ import SelectDoughType from "./components/order-components/SelectDoughType";
 import SelectSize from "./components/order-components/SelectSize";
 import SummaryBox from "./components/order-components/SummaryBox";
 import FakeToppingsList from "../FakeToppingList";
+import styled from "styled-components";
 
-export default function OrderPage() {
+
+const HeaderContentDiv = styled.div`
+background-color: #ce2829;
+  display: flex;           
+  flex-direction: column; 
+  align-items: center;     
+  justify-content: center; 
+  padding: 60px 0 40px;        
+  width: 100%;
+`
+
+const SelectionRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 40px auto;
+  width: 100%;
+  max-width:532px;
+min-width:532px;
+`;
+
+const OrderBottomRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 532px;
+  margin: 0 auto;
+  gap: 20px;
+`;
+
+
+
+export default function OrderPage({ setSelectedPage, setOrderData }) {
 
     const [toppingsList, setToppingsList] = useState(FakeToppingsList);
 
@@ -39,10 +73,10 @@ export default function OrderPage() {
 
                 }
             } else {
-                setFormData({
-                    ...formData,
-                    toppings: formData.toppings.filter(t => t !== name)
-                });
+                setFormData(prev => ({
+                    ...prev,
+                    toppings: prev.toppings.filter(t => t !== name)
+                }));
             }
         } else {
             setFormData({ ...formData, [name]: value });
@@ -50,14 +84,20 @@ export default function OrderPage() {
     }
 
     function increase() {
-        setFormData({ ...formData, count: formData.count + 1 });
+        setFormData(prev => ({
+            ...prev,
+            count: prev.count + 1
+        }));
     }
 
+
     function decrease() {
-        if (formData.count > 1) {
-            setFormData({ ...formData, count: formData.count - 1 });
-        }
+        setFormData(prev => ({
+            ...prev,
+            count: Math.max(1, prev.count - 1)
+        }));
     }
+
 
     const toppingsPrice = formData.toppings.length * 5;
     const total = (85.5 + toppingsPrice) * formData.count;
@@ -71,59 +111,75 @@ export default function OrderPage() {
         !nameValid;
 
     function handleSubmit(e) {
-        e.preventDefault();
+  e.preventDefault();
 
-        if (isInvalid) return;
+  if (isInvalid) return;
 
-        axios.post(
-            "https://reqres.in/api/pizza",
-            formData,
-            { headers: { "x-api-key": "reqres-free-v1" } }
-        )
-            .then(res => {
-                console.log("Sipariş yanıt:", res.data);
-            })
-            .catch(err => {
-                console.log("Hata:", err);
-            });
+  axios.post(
+    "https://reqres.in/api/pizza",
+    formData,
+    {
+      headers: {
+        "x-api-key": "reqres_a15760cffac94bde8fb347eece65ae2f"
+      }
     }
+  )
+  .then(res => {
+    console.log("API OK", res.data);
+    setOrderData({
+    ...formData,
+    toppingsPrice,
+    total
+  });;
+    setSelectedPage("success");
+  })
+  .catch(err => {
+    console.log("API FAIL", err?.response?.status);
 
-    return (
-        <div className="page-wrap">
-            <form onSubmit={handleSubmit} className="order-form">
+    // challenge fallback
+    setOrderData({
+    ...formData,
+    toppingsPrice,
+    total,
+    mock: true
+  });
+
+    setSelectedPage("success");
+  });
+}
 
 
-                <PositionAbsolute />
-                <div className="size-dough-row">
-                    <div className="size-block">
-                        <SelectSize
-                            value={formData.size}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="dough-block">
-                        <SelectDoughType
-                            value={formData.dough}
-                            onChange={handleChange}
-                        />
-                    </div>
-                </div>
-                <AdditionalToppings
-                    list={toppingsList}
-                    selected={formData.toppings}
-                    onChange={handleChange}
-                />
 
-                <ClientName
-                    value={formData.name}
-                    onChange={handleChange}
-                />
+return (
+    <div>
+        <div >
+            <HeaderContentDiv >
+                <img src={logo} alt="Teknolojik Yemekler" />
+            </HeaderContentDiv>
+        </div>
+        <form onSubmit={handleSubmit} >
+            <PositionAbsolute />
+            <SelectionRow>
+                <SelectSize value={formData.size} onChange={handleChange} />
+                <SelectDoughType value={formData.dough} onChange={handleChange} />
+            </SelectionRow>
+            <AdditionalToppings
+                list={toppingsList}
+                selected={formData.toppings}
+                onChange={handleChange}
+                maxReached={formData.toppings.length >= 10}
+            />
 
-                <OrderNote
-                    value={formData.note}
-                    onChange={handleChange}
-                />
+            <ClientName
+                value={formData.name}
+                onChange={handleChange}
+            />
 
+            <OrderNote
+                value={formData.note}
+                onChange={handleChange}
+            />
+            <OrderBottomRow>
                 <OrderCount
                     count={formData.count}
                     increase={increase}
@@ -135,9 +191,9 @@ export default function OrderPage() {
                     total={total}
                     disabled={isInvalid}
                 />
+            </OrderBottomRow>
+        </form >
+    </div>
+);
 
-            </form >
-        </div>
-    );
 }
-
