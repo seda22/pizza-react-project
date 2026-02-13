@@ -15,7 +15,7 @@ import SuccessPage from "./components/SuccessPage"
 export default function App (){
   const[selectedPage, setSelectedPage] = useState("PizzaWorld");
   const [orderData, setOrderData] = useState(null); {/*Sipariş bilgisini state olarak saklayacağım. Henüz sepet boş olduğu için null olarak tanımlandı başlangıç değeri. */}
-
+  /*OrderPage → setOrderData → App → SuccessPage*/
   return(
     
     <>
@@ -32,7 +32,7 @@ export default function App (){
       {selectedPage === "OrderPages" && (
         <OrderPage
           setSelectedPage={setSelectedPage}
-          setOrderData={setOrderData}
+          setOrderData={setOrderData} /*OrderPage içinde oluşturulan sipariş verisi setOrderData ile yukarı taşınıyor ve SuccessPage’e aktarılıyor.*/
         />
       )}
 

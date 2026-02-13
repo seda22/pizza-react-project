@@ -65,7 +65,7 @@ line-height: 30px;
 export default function PositionAbsolute() {
   return (
     <WrapperDiv className="wrapper">
-      <HeaderImg src="public/assets/iteration-2/pictures/form-banner.png" alt="" />
+      <HeaderImg src="/assets/iteration-2/pictures/form-banner.png" alt="" />
            <nav className="main-page-order-page">
              <ButtonHome className="page-btn" onClick={() => setActivePage("home")}>
                Anasayfa
