@@ -14,7 +14,7 @@ body{
   min-height: 100vh;                 /* 1080px karşılığı ekranın tamamını kaplayacak Hero en az bir ekran yüksekliğinde oldu */
   width: 100%;                       /* 1920px karşılığı tam ekran genişliği kapladı */
 
-  background-image: url("home-banner.png");
+  background-image: url("/assets/iteration-1/home-banner.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -248,9 +248,9 @@ h3.hackathlon{
 
 /* ARKAPLAN GÖRSELLERİ */
 
-.sol-buyuk{    background-image: url("./public/assets/iteration-2/cta/kart-1.png");}
-.sag-ust{    background-image: url("./public/assets/iteration-2/cta/kart-2.png"); }
-.sag-alt{ background-image: url("./public/assets/iteration-2/cta/kart-3.png");}
+.sol-buyuk{    background-image: url("/assets/iteration-2/cta/kart-1.png");}
+.sag-ust{    background-image: url("/assets/iteration-2/cta/kart-2.png"); }
+.sag-alt{ background-image: url("/assets/iteration-2/cta/kart-3.png");}
 
 /*CTA bitiş*/
 
