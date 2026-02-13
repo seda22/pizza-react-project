@@ -3,7 +3,7 @@
 Single Page pizza ordering application built with React.  
 Implements a complete order flow with controlled forms, state-driven navigation, API submission, and Cypress end-to-end tests.
 
-Live Demo:
+Live Demo: https://pizza-react-project-1srx.vercel.app
 Test Status: Cypress E2E tests passing
 
 ---
@@ -38,6 +38,21 @@ My Mechanical Engineering and ERP process experience influenced how the form wor
 - Error handling fallback flow
 - Styled-components modular styling
 - Data-driven rendering with map()
+
+---
+
+## 🔒 Form Rules & Validation Logic
+
+The order form includes guard rules to prevent invalid submissions.
+
+• Submit button remains disabled until required fields are completed  
+• Customer name, pizza size and dough thickness must be selected  
+• Toppings selection has enforced limits — minimum 4 and maximum 10  
+• Topping limits are controlled through array length checks in state  
+• Submit availability is derived from form state and bound to the button disabled prop  
+
+This ensures users cannot send incomplete or invalid orders and keeps the order flow predictable.
+
 
 ---
 
