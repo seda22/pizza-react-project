@@ -1,16 +1,55 @@
-# React + Vite
+# Pizza Order SPA — React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Single Page pizza ordering application built with React.  
+Implements a complete order flow with controlled forms, state-driven navigation, API submission, and Cypress end-to-end tests.
 
-Currently, two official plugins are available:
+Live Demo:
+Test Status: Cypress E2E tests passing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🍕 Project Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project simulates a configurable pizza ordering flow:
 
-## Expanding the ESLint configuration
+Product selection → Order form → Validation → API submission → Order confirmation screen
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Primary focus areas:
+
+- form state modeling
+- component communication
+- predictable event flow
+- testable UI behavior
+
+My Mechanical Engineering and ERP process experience influenced how the form workflow and validation logic were modeled — emphasizing guarded transitions and reliable state updates.
+
+---
+
+## ⚙️ Technical Highlights
+
+- Component-based UI architecture
+- Controlled form with centralized state
+- Prop lifting for cross-page data transfer
+- State-driven page switching (no router)
+- Multi-select toppings managed with immutable arrays
+- Derived price calculations from state
+- Real-time form validation and submit guard
+- Axios POST request to mock API endpoint
+- Error handling fallback flow
+- Styled-components modular styling
+- Data-driven rendering with map()
+
+---
+
+## 🧪 Cypress Test Coverage
+
+End-to-end tests implemented for the critical order flow:
+
+- text input interaction and validation
+- multi-select toppings behavior
+- form submit flow and success navigation
+
+Run tests:
+
+```bash
+npx cypress open
