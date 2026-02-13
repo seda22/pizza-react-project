@@ -57,7 +57,7 @@ const SubmitButton = styled.button`
 `;
 
 // Hata almamak için değerlere varsayılan olarak 0 atıyoruz
-const SummaryBox = ({ toppingsPrice = 0, total = 0, disabled, submitDataCy }) => {
+const SummaryBox = ({ toppingsPrice = 0, total = 0, disabled}) => {
   return (
     <Wrapper>
       <Card>
@@ -73,7 +73,7 @@ const SummaryBox = ({ toppingsPrice = 0, total = 0, disabled, submitDataCy }) =>
           <span>{Number(total).toFixed(2)}₺</span>
         </TotalRow>
       </Card>
-      <SubmitButton disabled={disabled} type="submit" data-cy={submitDataCy}>
+      <SubmitButton disabled={disabled} type="submit">
         SİPARİŞ VER
       </SubmitButton>
     </Wrapper>
